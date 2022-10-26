@@ -14,9 +14,7 @@
             <% for(let i = 0; i < allProducts.length; i++) { %>
             <h3><%=allProducts[i].name %></h3>
             <a href="/intravenous/<%=i%>"><img src="<%=allProducts[i].img %>"></a>
-            <p><%=allProducts[i].description %></p> 
-            <p><%=allProducts[i].price%></p>  
-            <p><%=allProducts[i].qty%></p>
+
         </div>
         <% } %>
     </main>

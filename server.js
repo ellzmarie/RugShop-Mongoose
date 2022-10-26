@@ -29,7 +29,7 @@ mongoose.connect(process.env.DATABASE_URL, {
 // })
 
 // INDEX
-app.get('/', (req,res) => {
+app.get('/intravenous', (req,res) => {
     // res.send('mic check 1,2,1,2')
     res.render('index.ejs', {
     allProducts: homeData,
@@ -52,7 +52,13 @@ app.delete('/intravenous/:id', (req,res) => {
 // UPDATE
 // CREATE
 // EDIT
+
 // SHOW
+app.get('/intravenous/:id', (req, res) => {
+    res.render('show.ejs', {
+        allProducts: homeData[req.params.id]
+    })
+})
 
 // app.get("/seed", (req, res) => {
 //     homeProducts.deleteMany({}, (error, allProducts) => {})
