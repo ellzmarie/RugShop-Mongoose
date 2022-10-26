@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intravenous </title>
+</head>
+<body>
+   <div class="container">
+    <main>
+        <h1>Rugs</h1>
+        <div class = "container top-container">
+            <% for(let i = 0; i < allProducts.length; i++) { %>
+            <h3><%=allProducts[i].name %></h3>
+            <a href="/intravenous/<%=i%>"><img src="<%=allProducts[i].img %>"></a>
+            <p><%=allProducts[i].description %></p> 
+            <p><%=allProducts[i].price%></p>  
+            <p><%=allProducts[i].qty%></p>
+        </div>
+        <% } %>
+    </main>
+   </div> 
+</body>
+</html>
