@@ -14,15 +14,15 @@
       <h1>Rugs</h1>
       <div class="container top-container">
         <% homeproducts.forEach(product=> { %>
-          <li>
-            <%=product.name %>
+          
+            <h2><%=product.name %></h2>
               <a href="/intravenous/<%=product._id %>"><img src="<%=product.img %>"></a>
 
               <form action="/intravenous/<%=product._id %>?_method=DELETE" method="post">
                 <input type="submit" value="DELETE" />
               </form>
               <a href="/intravenous/<%=product._id %>/edit">EDIT</a>
-          </li>
+          
           <% }) %>
       </div>
     </main>
