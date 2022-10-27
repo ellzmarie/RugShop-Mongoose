@@ -9,8 +9,8 @@ require('dotenv').config()
 const PORT = process.env.PORT
 
 mongoose.connect(process.env.DATABASE_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 // Database Connection Logs
@@ -29,25 +29,25 @@ app.use(express.static('public'))
 // })
 
 app.get("/seed", (req, res) => {
-    HomeProduct.deleteMany({}, (error, allProducts) => { })
-    HomeProduct.create(homeData, (error, data) => {
-        res.redirect("/intravenous");
-    });
+  HomeProduct.deleteMany({}, (error, allProducts) => { })
+  HomeProduct.create(homeData, (error, data) => {
+    res.redirect("/intravenous");
+  });
 })
 
 
 // INDEX
 app.get('/intravenous', (req, res) => {
-    // res.send('mic check 1,2,1,2')
-    HomeProduct.find({}, (error, allProducts) => {
-        res.render('index.ejs', { homeproducts: allProducts })
-    })
+  // res.send('mic check 1,2,1,2')
+  HomeProduct.find({}, (error, allProducts) => {
+    res.render('index.ejs', { homeproducts: allProducts })
+  })
 })
 
 // NEW
 app.get('/intravenous/new', (req, res) => {
-    // res.send('create new product')
-    res.render('new.ejs')
+  // res.send('create new product')
+  res.render('new.ejs')
 })
 
 // DELETE / DESTROY
@@ -75,19 +75,19 @@ app.get('/intravenous/new', (req, res) => {
 
 // EDIT
 app.get('/intravenous/:id/edit', (req, res) => {
-    res.render('edit.ejs', {
-        allProducts: homeData[req.params.id],
-        id: req.params.id
-    })
+  res.render('edit.ejs', {
+    allProducts: homeData[req.params.id],
+    id: req.params.id
+  })
 })
 
 // SHOW
 app.get('/intravenous/:id', (req, res) => {
-    HomeProduct.findById(req.params.id, (err, product) => {
-        res.render('show.ejs', {
-            product: product
-        })
+  HomeProduct.findById(req.params.id, (err, product) => {
+    res.render('show.ejs', {
+      product: product
     })
+  })
 
 })
 
