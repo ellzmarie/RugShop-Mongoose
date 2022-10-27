@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Edit Rug</h1>
-        <form actions="/intravenous/<%=id%>?_method=PUT" method="POST">
+        <form actions="/intravenous/<%=product._id %>?_method=PUT" method="POST">
             
             <label for="name">Name:</label>
             <input type="text" name="name"/><br><br>
@@ -26,8 +26,11 @@
             <label for="attack">Quantity:</label>
             <input type="text" name="qty"/><br><br>
             
+            Completed: <input type="checkbox" name="completed" <% if(product.completed=== true){ %> checked <% } %> />
+      <br />
+            
 
-            <button class="new-btn"><a href="/intravenous">Submit</a></button>
+            <input type="submit" class="new-btn"><a href="/intravenous">Submit</a></button>
             <br><br>
         </form>
     </div>

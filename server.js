@@ -28,6 +28,7 @@ app.use(express.static('public'))
 //     res.send('Welcome to my shop!')
 // })
 
+// SEED
 app.get("/seed", (req, res) => {
   HomeProduct.deleteMany({}, (error, allProducts) => { })
   HomeProduct.create(homeData, (error, data) => {
@@ -51,35 +52,42 @@ app.get('/intravenous/new', (req, res) => {
 })
 
 // DELETE / DESTROY
-// app.delete('/intravenous/:id', (req,res) => {
-//     // res.send('delete product here')
-//     homeProducts.findByIdAndRemove(req.params.id, (err, deletedHomeProduct) => {
-//         res.redirect('/intravenous')
-//     })
-// })
+app.delete('/intravenous/:id', (req,res) => {
+    // res.send('delete product here')
+    HomeProduct.findByIdAndRemove(req.params.id, (err, deletedHomeProduct) => {
+        res.redirect('/intravenous')
+    })
+})
 
 // UPDATE
+app.put('/intravenous/:id', (req,res) => {
+  req.body.completed = (req.body.completed === "on") ? true : false;
+  HomeProduct.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    {new: true},
+    (err, updatedProduct) => {
+      res.redirect(`/intravenous/${req.params.id}`)
+    }
+  )
+})
+
 // CREATE
-// app.post('/intravenous', (req, res) => {
-//     let newHome = {
-//         name: req.body.name,
-//         description: req.body.description,
-//         img: req.body.img,
-//         price: req.body.price,
-//         qty: req.body.qty
-//     }
-//     homeData.push(newHome)
-//     res.redirect('/intravenous')
-// })
+app.post('/intravenous', (req, res) => {
+    req.body.completed = req.body.completed === "on" ? true : false;
+    HomeProduct.create(req.body, (error, createdBook) => {
+      res.redirect("/intravenous")
+    })
+})
 
 
 // EDIT
-app.get('/intravenous/:id/edit', (req, res) => {
-  res.render('edit.ejs', {
-    allProducts: homeData[req.params.id],
-    id: req.params.id
+app.get('/intravenous/:id/edit', (req,res) => {
+  HomeProduct.findById(req.params.id, (err, allProducts) => {
+    res.render('edit.ejs', {homeproducts: allProducts})
   })
 })
+
 
 // SHOW
 app.get('/intravenous/:id', (req, res) => {
