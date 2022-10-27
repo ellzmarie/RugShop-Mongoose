@@ -5,7 +5,7 @@ const HomeProduct = require('../models/product.js')
 
 // I N D U C E S - Index New Delete Update Create Edit Show
 // SEED
-rugRouter.get("/seed", (req, res) => {
+rugRouter.get("/intravenous/seed", (req, res) => {
   HomeProduct.deleteMany({}, (error, allProducts) => { })
   HomeProduct.create(homeData, (error, data) => {
     res.redirect("/intravenous");
@@ -14,7 +14,6 @@ rugRouter.get("/seed", (req, res) => {
 
 // INDEX
 rugRouter.get('/intravenous', (req, res) => {
-  // res.send('mic check 1,2,1,2')
   HomeProduct.find({}, (error, allProducts) => {
     res.render('index.ejs', { homeproducts: allProducts })
   })
@@ -22,13 +21,11 @@ rugRouter.get('/intravenous', (req, res) => {
 
 // NEW
 rugRouter.get('/intravenous/new', (req, res) => {
-  // res.send('create new product')
   res.render('new.ejs')
 })
 
 // DELETE / DESTROY
 rugRouter.delete('/intravenous/:id', (req, res) => {
-  // res.send('delete product here')
   HomeProduct.findByIdAndRemove(req.params.id, (err, deletedProduct) => {
     res.redirect('/intravenous')
   })
@@ -87,4 +84,4 @@ rugRouter.get('/intravenous/:id', (req, res) => {
   })
 })
 
-module.exports = rugsRouter
+module.exports = rugRouter
