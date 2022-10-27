@@ -8,13 +8,12 @@
 </head>
 <body>
     <div class="container">
-        <h1><%=allProducts.name %></h1>
-        <img src="<%= allProducts.img %>">
-        <img src="/img/outkastRug.png">
+        <h1><%= product.name %></h1>
+        <img src="<%= product.img %>">
         <div class="container body-container">            
-            </br>Description: <%=allProducts.description %> 
-            </br>Price: $<%=allProducts.price%>  
-            </br>Quantity: <%=allProducts.qty%>
+            </br>Description: <%=product.description %> 
+            </br>Price: $<%=product.price%>  
+            </br>Quantity: <%=product.qty%>
         </div>
     </div>
 </body>

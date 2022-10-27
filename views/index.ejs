@@ -1,23 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intravenous </title>
-</head>
-<body>
-   <div class="container">
-    <main>
-        <h1>Rugs</h1>
-        <div class = "container top-container">
-            <% for(let i = 0; i < allProducts.length; i++) { %>
-            <h3><%=allProducts[i].name %></h3>
-            <a href="/intravenous/<%=i%>"><img src="<%=allProducts[i].img %>"></a>
 
-        </div>
-        <% } %>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Intravenous </title>
+</head>
+
+<body>
+  <div class="container">
+    <main>
+      <h1>Rugs</h1>
+      <div class="container top-container">
+        <% homeproducts.forEach(product=> { %>
+          <li>
+            <%=product.name %>
+              <a href="/intravenous/<%=product._id %>"><img src="<%=product.img %>"></a>
+
+              <form action="/intravenous/<%=product._id %>?_method=DELETE" method="post">
+                <input type="submit" value="DELETE" />
+              </form>
+              <a href="/intravenous/<%=product._id %>/edit">EDIT</a>
+          </li>
+          <% }) %>
+      </div>
     </main>
-   </div> 
+  </div>
 </body>
+
 </html>

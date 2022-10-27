@@ -14,11 +14,11 @@ const homeData = [
         qty: 20
     },
     {
-    name: "Black & Ivory",
-    description: "Keith Haring Freestyle",
-    img: './img/keithHaringRug2.png',
-    price: 769,
-    qty: 50
+        name: "Black & Ivory",
+        description: "Keith Haring Freestyle",
+        img: './img/keithHaringRug2.png',
+        price: 769,
+        qty: 50
     }
 ]
 
