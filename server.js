@@ -40,18 +40,40 @@ app.get('/intravenous', (req,res) => {
 
 // NEW
 app.get('/intravenous/new', (req, res) => {
-    res.send('create new product')
-    // res.render('new.ejs')
+    // res.send('create new product')
+    res.render('new.ejs')
 })
 
 // DELETE / DESTROY
 app.delete('/intravenous/:id', (req,res) => {
-    res.send('delete product here')
+    // res.send('delete product here')
+    homeProducts.findByIdAndRemove(req.params.id, (err, deletedHomeProduct) => {
+        res.redirect('/intravenous')
+    })
 })
 
 // UPDATE
 // CREATE
+app.post('/intravenous', (req, res) => {
+    let newHome = {
+        name: req.body.name,
+        description: req.body.description,
+        img: req.body.img,
+        price: req.body.price,
+        qty: req.body.qty
+    }
+    homeData.push(newHome)
+    res.redirect('/intravenous')
+})
+
+
 // EDIT
+app.get('/intravenous/:id/edit', (req, res) => {
+    res.render('edit.ejs', {
+        allProducts: homeData[req.params.id],
+        id: req.params.id
+    })
+})
 
 // SHOW
 app.get('/intravenous/:id', (req, res) => {
