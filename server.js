@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
-// const methodOverride = require('method-override')
+const methodOverride = require('method-override')
 const homeData = require('./models/seed.js')
 const HomeProduct = require('./models/product.js')
 
@@ -20,7 +20,7 @@ db.on("connected", () => console.log("mongo connected"))
 db.on("disconnected", () => console.log("mongo disconnected"))
 
 app.use(express.urlencoded({ extended: true }))
-//   app.use(methodOverride("_method"))
+app.use(methodOverride("_method"))
 //app.use('',)
 app.use(express.static('public'))
 
@@ -54,8 +54,8 @@ app.get('/intravenous/new', (req, res) => {
 // DELETE / DESTROY
 app.delete('/intravenous/:id', (req,res) => {
     // res.send('delete product here')
-    HomeProduct.findByIdAndRemove(req.params.id, (err, deletedHomeProduct) => {
-        res.redirect('/intravenous')
+    HomeProduct.findByIdAndRemove(req.params.id, (err, deletedProduct) => {
+      res.redirect('/intravenous')
     })
 })
 
@@ -75,7 +75,7 @@ app.put('/intravenous/:id', (req,res) => {
 // CREATE
 app.post('/intravenous', (req, res) => {
     req.body.completed = req.body.completed === "on" ? true : false;
-    HomeProduct.create(req.body, (error, createdBook) => {
+    HomeProduct.create(req.body, (error, createdProduct) => {
       res.redirect("/intravenous")
     })
 })
@@ -83,8 +83,10 @@ app.post('/intravenous', (req, res) => {
 
 // EDIT
 app.get('/intravenous/:id/edit', (req,res) => {
-  HomeProduct.findById(req.params.id, (err, allProducts) => {
-    res.render('edit.ejs', {homeproducts: allProducts})
+  HomeProduct.findById(req.params.id, (err, product) => {
+    res.render('edit.ejs', {
+      product: product
+    })
   })
 })
 
@@ -96,7 +98,6 @@ app.get('/intravenous/:id', (req, res) => {
       product: product
     })
   })
-
 })
 
 
