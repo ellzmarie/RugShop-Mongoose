@@ -28,6 +28,7 @@
     /* border: 1px solid transparent; */
     padding: 2px;
     /* border-style: solid; */
+    
     }
     .container {
       display: flex;
@@ -70,13 +71,14 @@
   
   /* Change the link color to #111 (black) on hover */
   li a:hover {
-    background-color: white;
+    background-color: #fdbfd6;
   }
   .item-title {
-    background-color: white;
+    background-color: black;
     display:inline;
     border-style: transparent;
     padding: 5px;
+    color: white;
   }
 
   </style>
@@ -84,16 +86,13 @@
 </head>
 
 <body>
-    <!-- ============ HEADER ============ -->
     <%- include('./partials/header.ejs')%>
-    <!-- ============ MAIN ============ -->
-
   <div class="container">
     <main>
       <h1>Rugs</h1>
       <div class="container top-container">
         <% homeproducts.forEach(product=> { %>
-            <h2><div class="item-title"><%=product.name %></div></h2>
+            <h3><div class="item-title"><%=product.name %></div></h3>
               <a href="/intravenous/<%=product._id %>"><img src="<%=product.img %>"></a><br>
 
               <form action="/intravenous/<%=product._id %>?_method=DELETE" method="post">

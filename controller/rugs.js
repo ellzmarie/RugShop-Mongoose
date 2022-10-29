@@ -21,8 +21,9 @@ rugRouter.get('/', (req, res) => {
 
 // NEW
 rugRouter.get('/new', (req, res) => {
-  res.render('new.ejs')
-})
+    res.render('new.ejs')
+  })
+
 
 // DELETE / DESTROY
 rugRouter.delete('/:id', (req, res) => {
