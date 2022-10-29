@@ -6,9 +6,53 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Edit Rug</title>
+  <style>
+    body {
+      text-align: center;
+    }
+    h1 {
+      text-align: center;
+      justify-content: center;
+    }
+/* Menu bar */
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #d1e64b;
+  }
+  
+  li {
+    float: right;
+  }
+  
+  li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bolder;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: #fdbfd6;
+  }
+    </style>
 </head>
 
 <body>
+<!-- ============ HEADER ============ -->
+<%- include('./partials/header.ejs')%>
+<!-- ============ MAIN ============ -->
   <div class="container">
     <h1>Edit Rug</h1>
     <form action="/intravenous/<%=product._id%>?_method=PUT" method="POST">

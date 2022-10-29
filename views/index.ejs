@@ -11,39 +11,93 @@
     body {
       background-image: url("https://i.imgur.com/uIgJC78.jpg");
       background-position: center;
-      background-size: 20%;
+      background-size: 35%;
       background-repeat: repeat;
-      width: 100px;
-      height: 100px;
-      margin: 50px;
-      padding: 50px;
+      /* width: 100px;
+      height: 100px; */
+      /* margin: 50px;
+      padding: 50px; */
       color: black;
       justify-content: center;
       align-content: center;
     }
     h1 {
+    display: inline;
     text-align: center;
+    /* background-color: #d1e64b; */
+    /* border: 1px solid transparent; */
+    padding: 2px;
+    /* border-style: solid; */
     }
     .container {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
+      text-align: center;
     }
+    img {
+      background-color: #d1e64b;
+      border: 10px solid transparent;
+      padding: 15px;
+    }
+
+/* Menu bar */
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #d1e64b;
+  }
+  
+  li {
+    float: right;
+  }
+  
+  li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bolder;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: white;
+  }
+  .item-title {
+    background-color: white;
+    display:inline;
+    border-style: transparent;
+    padding: 5px;
+  }
 
   </style>
 
 </head>
 
 <body>
+    <!-- ============ HEADER ============ -->
+    <%- include('./partials/header.ejs')%>
+    <!-- ============ MAIN ============ -->
+
   <div class="container">
     <main>
       <h1>Rugs</h1>
       <div class="container top-container">
         <% homeproducts.forEach(product=> { %>
-            <h2><%=product.name %></h2></br></br>
-              <a href="/intravenous/<%=product._id %>"><img src="<%=product.img %>"></a><br><br>
+            <h2><div class="item-title"><%=product.name %></div></h2>
+              <a href="/intravenous/<%=product._id %>"><img src="<%=product.img %>"></a><br>
 
               <form action="/intravenous/<%=product._id %>?_method=DELETE" method="post">
-                <input type="submit" value="DELETE" />
+                <input type="submit" value="DELETE" /></br></br>
               </form>
 
           

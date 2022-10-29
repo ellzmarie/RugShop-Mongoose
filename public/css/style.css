@@ -9,3 +9,36 @@ body {
 h1 {
     text-align: center;
 }
+
+/* Menu bar */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+    
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #d1e64b;
+      }
+      
+      li {
+        float: right;
+      }
+      
+      li a {
+        display: block;
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-weight: bolder;
+      }
+      
+      /* Change the link color to #111 (black) on hover */
+      li a:hover {
+        background-color: white;
+      }

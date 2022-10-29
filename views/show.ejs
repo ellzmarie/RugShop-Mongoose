@@ -14,21 +14,59 @@
       text-align: center;
       justify-content: center;
     }
-    img{
+    img {
+      background-color: #d1e64b;
+      border: 10px solid transparent;
+      padding: 15px;
       justify-content: center;
     }
+  /* Menu bar */
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #d1e64b;
+  }
+  
+  li {
+    float: right;
+  }
+  
+  li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-weight: bolder;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  li a:hover {
+    background-color: #fdbfd6;
+  }
   </style>
 
 </head>
 
 <body>
+  <!-- ============ HEADER ============ -->
+  <%- include('./partials/header.ejs')%>
+  <!-- ============ MAIN ============ -->
   <div class="container">
     <h1><%=product.name %></h1>
     <img src="<%=product.img %>">
     <div class="container body-container">
-      </br>Description: <%=product.description %>
-        </br>Price: $<%=product.price%>
-          </br>Quantity: <%=product.qty%></br>
+      </br><b>Description:</b> <%=product.description %>
+        </br><b>Price:</b> $<%=product.price%>
+          </br><b>Quantity:</b> <%=product.qty%></br>
           <a href="/intravenous/<%=product._id %>/edit">Edit</a>
         </br>
       <div class="buybtn">
