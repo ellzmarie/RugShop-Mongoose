@@ -32,18 +32,7 @@ rugRouter.delete('/:id', (req, res) => {
   })
 })
 
-// UPDATE
-rugRouter.put('/:id', (req, res) => {
-  req.body.completed = (req.body.completed === "on") ? true : false;
-  HomeProduct.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    { new: true },
-    (err, updatedProduct) => {
-      res.redirect(`/intravenous/${req.params.id}`)
-    }
-  )
-})
+
 
 // BUY BUTTON
 rugRouter.put('/cart/:id', (req, res) => {
@@ -55,6 +44,19 @@ rugRouter.put('/cart/:id', (req, res) => {
       purchasedProduct.save()
       res.redirect(`/intravenous/${req.params.id}`)
     })
+})
+
+// UPDATE
+rugRouter.put('/:id', (req, res) => {
+  req.body.completed = (req.body.completed === "on") ? true : false;
+  HomeProduct.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true },
+    (err, updatedProduct) => {
+      res.redirect(`/intravenous/${req.params.id}`)
+    }
+  )
 })
 
 // CREATE
