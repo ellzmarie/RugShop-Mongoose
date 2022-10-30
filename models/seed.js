@@ -8,7 +8,7 @@ const homeData = [
     },
     {
         name: "Keep Off",
-        description: "Off-White",
+        description: "Off-White x IKEA collab",
         img: 'https://i.imgur.com/wDaI9mL.png',
         price: 1900,
         qty: 20
@@ -17,6 +17,13 @@ const homeData = [
         name: "Black & Ivory",
         description: "Keith Haring Freestyle",
         img: 'https://i.imgur.com/VDf5VuZ.png',
+        price: 769,
+        qty: 50
+    },
+    {
+        name: "Blueprint",
+        description: "Jayz's Blueprint",
+        img: 'https://i.imgur.com/xhVtDch.png',
         price: 769,
         qty: 50
     }
