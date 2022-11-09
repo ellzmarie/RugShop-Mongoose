@@ -68,11 +68,17 @@
           </br><b>Quantity:</b> <%=product.qty%></br>
           <a href="/intravenous/<%=product._id %>/edit">Edit</a>
         </br>
-      <div class="buybtn">
-        <form action="/intravenous/cart/<%=product._id%>?_method=PUT" method="POST">
-          <input type="submit" value="BUY" />
-        </form>
-      </div>
+        <!-- this is how you can remove the buy button and show out of stock -->
+        <%if(product.qty <= 0){%>
+          <div>OUT of STOCK</div>
+        <%} else{%>
+          <div class="buybtn">
+            <form action="/intravenous/cart/<%=product._id%>?_method=PUT" method="POST">
+              <input type="submit" value="BUY" />
+            </form>
+          </div>
+        <%}%>
+
     </div>
   </div>
 </body>
